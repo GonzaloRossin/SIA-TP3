@@ -1,0 +1,43 @@
+{
+    "normalize": 0,
+    "hidden_activation": "relu",
+    "output_activation": "sigmoid",
+
+    "input_file": "./input_files/c.txt",
+    "training_set_ratio": 100,
+
+    "num_features": 35,
+    "num_outputs": 10,
+
+    "apply_bias": 0,
+    "learning_rate": 0.001,
+
+    "num_epochs": 50000,
+    
+    "use_mini_batches": 0,
+    "mini_batch_size": 1,
+
+    "hidden_layers": {
+        "use_num": 0,
+        "num_layers": 5,
+        "max_dim": 20,
+        "__or": "",
+        "layer_dims": [10]
+    },
+
+    "optimizer": {
+        "method": "adam",
+        "momentum_alpha": 0.9,
+        "adam": {
+            "beta1": 0.9,
+            "beta2": 0.999,
+            "epsilon": 1e-8
+        }
+    },
+
+    "adaptive_etha": {
+        "after": 0,
+        "a": 0.01,
+        "b": 0.0001
+    }
+}
