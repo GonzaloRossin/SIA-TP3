@@ -1,4 +1,5 @@
 import numpy as np
+from inputs.fonts import bitmap
 from utils.constants import *
 from multilayer_utils.Normalization import normalize
 
@@ -31,14 +32,15 @@ class InputHandler:
         self.num_layers = input['hidden_layers']['num_layers']
         self.learning_rate = input['learning_rate']
 
-        self.normalize = (input['normalize']==1)
-        self.hidden_activation = input['hidden_activation']
-        self.output_activation = input['output_activation']
+        #self.normalize = (input['normalize']==1)
+        #self.hidden_activation = input['hidden_activation']
+        #self.output_activation = input['output_activation']
 
         num_features = input['num_features']
         num_outputs = input['num_outputs']
 
-        X, Y = read_input(input['input_file'], num_features)
+        #X, Y = read_input(input['input_file'], num_features)
+        X = list(bitmap)
         if (self.normalize):
             Y, self.min_y, self.max_y = normalize(Y, self.output_activation)
 
@@ -49,9 +51,9 @@ class InputHandler:
 
         training_idx = len(X) * self.ratio // 100
         train_X = X[:training_idx]
-        train_Y = Y[:training_idx]
-        test_X = X[training_idx:]
-        test_Y = Y[training_idx:]
+        train_Y = X[:training_idx]
+        test_X = X[:training_idx]
+        test_Y = X[:training_idx]
 
         self.training_set_X = np.array(train_X).T
         self.test_set_X = np.array(test_X).T

@@ -1,13 +1,13 @@
 {
     "normalize": 0,
-    "hidden_activation": "relu",
-    "output_activation": "sigmoid",
+    "hidden_activation": "sigmoid",
+    "output_activation": "relu",
 
     "input_file": "./input_files/c.txt",
     "training_set_ratio": 100,
 
     "num_features": 35,
-    "num_outputs": 10,
+    "num_outputs": 35,
 
     "apply_bias": 0,
     "learning_rate": 0.001,
@@ -19,10 +19,10 @@
 
     "hidden_layers": {
         "use_num": 0,
-        "num_layers": 5,
+        "num_layers": 3,
         "max_dim": 20,
         "__or": "",
-        "layer_dims": [10]
+        "layer_dims": [15, 2, 15]
     },
 
     "optimizer": {
