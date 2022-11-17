@@ -33,16 +33,16 @@ class InputHandler:
         self.learning_rate = input['learning_rate']
 
         #self.normalize = (input['normalize']==1)
-        #self.hidden_activation = input['hidden_activation']
-        #self.output_activation = input['output_activation']
+        self.hidden_activation = input['hidden_activation']
+        self.output_activation = input['output_activation']
 
         num_features = input['num_features']
         num_outputs = input['num_outputs']
 
         #X, Y = read_input(input['input_file'], num_features)
         X = list(bitmap)
-        if (self.normalize):
-            Y, self.min_y, self.max_y = normalize(Y, self.output_activation)
+        #if (self.normalize):
+        #    Y, self.min_y, self.max_y = normalize(Y, self.output_activation)
 
         if (ratio < 0):
             self.ratio = input['training_set_ratio']

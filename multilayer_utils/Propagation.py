@@ -4,7 +4,7 @@ from multilayer_utils.Activation import *
 ## FORWARD ############################################################################################################
 
 def excitation_forward(X, W, b):
-    H = np.dot(W,X)+b   # hyperplane with bias
+    H = np.dot(W, X)+b   # hyperplane with bias
     cache = (X, W, b)
     return H, cache
 
@@ -22,6 +22,7 @@ def excitation_activation_forward(V_prev, W, b, activation):
 def model_forward(X, parameters, apply_bias, hidden_activation, output_activation):
     V = X
     caches = []
+    latent_code = []
     if (apply_bias):
         L = len(parameters) // 2    # includes weights and biases
     else:
@@ -34,6 +35,8 @@ def model_forward(X, parameters, apply_bias, hidden_activation, output_activatio
         else:
             b = 0
         V, cache = excitation_activation_forward(V_prev, parameters['W'+str(l)], b, hidden_activation)
+        if l == 2:
+            latent_code.append(cache)
         caches.append(cache)
     # activate output layer
     if (apply_bias):
@@ -41,7 +44,7 @@ def model_forward(X, parameters, apply_bias, hidden_activation, output_activatio
     else:
         O, cache = excitation_activation_forward(V, parameters['W'+str(L)], 0, output_activation)
     caches.append(cache)
-    return O, caches
+    return O, caches, latent_code
 
 ## BACKWARD ############################################################################################################
 
@@ -69,7 +72,7 @@ def excitation_activation_backward(dV, cache, activation, apply_bias):
 
 def model_backward(O, Y, caches, hidden_activation, output_activation, apply_bias):
     gradients = {}
-    L = len(caches) # number of layers
+    L = len(caches)# number of layers
     Y = Y.reshape(O.shape)
     dO = O - Y
     '''

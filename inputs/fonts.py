@@ -103,4 +103,4 @@ def formatFontList(bitmap):
     toRet = []
     for row in bitmap:
         toRet.append(np.array(row))
-    return np.array(toRet)
+    return np.array(toRet).T

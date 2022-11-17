@@ -33,7 +33,7 @@ def random_mini_batches(X, Y, mini_batch_size, seed):
 def multilayer_perceptron(X, Y, input_handler: InputHandler):
     
     errors = []
-    parameters = init_parameters(input_handler.layer_dims, input_handler.apply_bias)    
+    parameters = init_parameters(input_handler.layer_dims, input_handler.apply_bias)
     
     num_layers = len(input_handler.layer_dims)
     if (input_handler.optimizer == MOMENTUM):
@@ -49,7 +49,7 @@ def multilayer_perceptron(X, Y, input_handler: InputHandler):
         total_error = []
         for minibatch in minibatches:
             (minibatch_X, minibatch_Y) = minibatch
-            O, caches = model_forward(minibatch_X, parameters, input_handler.apply_bias, input_handler.hidden_activation, input_handler.output_activation)
+            O, caches, latent_code = model_forward(minibatch_X, parameters, input_handler.apply_bias, input_handler.hidden_activation, input_handler.output_activation)
             total_error.append(compute_error(O, minibatch_Y, input_handler.output_activation))
             gradients = model_backward(O, minibatch_Y, caches, input_handler.hidden_activation, input_handler.output_activation, input_handler.apply_bias)
             if (input_handler.optimizer == MOMENTUM):
@@ -70,4 +70,4 @@ def multilayer_perceptron(X, Y, input_handler: InputHandler):
             else:
                 delta_etha = 0
             input_handler.learning_rate += delta_etha
-    return parameters, errors
+    return parameters, errors, latent_code
