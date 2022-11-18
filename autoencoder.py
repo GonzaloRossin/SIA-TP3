@@ -2,7 +2,7 @@ import json
 from multilayer_utils.MultilayerPerceptron import multilayer_perceptron
 from inputs.fonts import *
 from utils.InputHandler import InputHandler
-
+import matplotlib.pyplot as plt
 
 class Autoencoder:
     def __init__(self):
@@ -26,3 +26,9 @@ class Autoencoder:
 
 autoencoder = Autoencoder()
 autoencoder.trainNetwork()
+x = []
+for i in range(len(autoencoder.getErrors())):
+    x.append(i)
+
+plt.plot(x, autoencoder.getErrors())
+plt.show()
