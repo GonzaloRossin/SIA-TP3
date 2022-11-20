@@ -26,9 +26,9 @@ def plotResultComparison(autoencoder):
         plt.matshow(matrix)
         plt.colorbar()
         plt.show()'''''
-    for i in range(len(bitmap)):
+    for i in range(32):
         output = np.reshape(prediction[i], (7, 5))
-        plt.matshow(output)
+        plt.matshow(output, vmin=0, vmax=1)
         plt.colorbar()
         plt.show()
 
