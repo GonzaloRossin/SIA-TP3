@@ -4,7 +4,7 @@ from multilayer_utils.Prediction import predict
 
 from EJ1.a.autoencoder import Autoencoder
 from inputs.fonts import formatFontList, bitmap
-from utils import constants
+from utils.constants import SIGMOID
 from utils.constants import SIGMOID, RELU
 
 
@@ -17,9 +17,9 @@ def plotError(autoencoder):
     plt.show()
 
 
-def plotResultComparison(autoencoder):
+def plotResultComparison(encoder):
     testSet = formatFontList(bitmap).T
-    prediction = np.array(predict(autoencoder.getFontMap(), autoencoder.getParameters(), False, SIGMOID, RELU)).T
+    prediction = np.array(predict(encoder.getFontMap(), encoder.getParameters(), False, SIGMOID, SIGMOID)).T
 
     '''for i in range(len(bitmap)):
         matrix = np.reshape(testSet[i], (7, 5))
@@ -32,6 +32,16 @@ def plotResultComparison(autoencoder):
         plt.colorbar()
         plt.show()
 
+
+def plotError(encoder):
+    x = []
+    for i in range(len(encoder.getErrors())):
+        x.append(i)
+    plt.plot(x, encoder.getErrors())
+    plt.show()
+
+
 autoencoder = Autoencoder()
 autoencoder.trainNetwork()
-plotResultComparison(autoencoder)
+# plotResultComparison(autoencoder)
+plotError(autoencoder)
