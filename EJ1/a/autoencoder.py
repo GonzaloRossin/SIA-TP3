@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 class Autoencoder:
     def __init__(self):
-        with open('../../config.json', 'r') as f:
+        with open('EJ1config.json', 'r') as f:
             nnConfig = json.load(f)
             self.inputHandler = InputHandler(nnConfig, -1)
         self.fontMap = formatFontList(bitmap)

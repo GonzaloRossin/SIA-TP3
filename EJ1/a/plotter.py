@@ -18,8 +18,9 @@ def plotError(autoencoder):
 
 
 def plotResultComparison(encoder):
-    testSet = formatFontList(bitmap).T
-    prediction = np.array(predict(encoder.getFontMap(), encoder.getParameters(), False, SIGMOID, SIGMOID)).T
+    #testSet = formatFontList(bitmap).T
+    prediction, _ = predict(encoder.getFontMap(), encoder.getParameters(), False, SIGMOID, SIGMOID)
+    prediction = np.array(prediction).T
 
     '''for i in range(len(bitmap)):
         matrix = np.reshape(testSet[i], (7, 5))
@@ -43,5 +44,5 @@ def plotError(encoder):
 
 autoencoder = Autoencoder()
 autoencoder.trainNetwork()
-# plotResultComparison(autoencoder)
 plotError(autoencoder)
+plotResultComparison(autoencoder)
