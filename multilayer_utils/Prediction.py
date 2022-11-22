@@ -3,18 +3,18 @@ from utils.constants import *
 from multilayer_utils.Propagation import model_forward
 
 def logistic_prediction(X, trained_parameters, hidden_activation, apply_bias):
-    O, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, SIGMOID)
+    O, _, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, SIGMOID)
     P = 1 * (O > 0.5)
     return O, P
 
 def linear_prediction(X, trained_parameters, hidden_activation, apply_bias):
-    O, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, RELU)
-    return O, _
+    O, _, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, RELU)
+    return O
 
 def tanh_prediction(X, trained_parameters, hidden_activation, apply_bias):
-    O, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, TANH)
+    O, _, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, TANH)
     P = 2 * (O > 0.5) - 1
-    return O, P
+    return O, P, _
 
 def predict(X, trained_parameters, apply_bias, hidden_activation, output_activation):
     if (output_activation == SIGMOID):
