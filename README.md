@@ -54,9 +54,6 @@ Para administrar parámetros hay un archivo EJ1config.json,donde podemos gestion
 }
 ```
 
-Donde la operación puede ser "and" o "xor".
-Los otros dos parámetros learning rate y numero de épocas pueden tener cualquier número que consideremos oportuno.
-
 ### Ejercicio 2
 
 ## Librerias Necesarias
