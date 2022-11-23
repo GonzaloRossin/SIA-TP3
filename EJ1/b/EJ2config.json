@@ -2,29 +2,28 @@
     "normalize": 0,
     "hidden_activation": "sigmoid",
     "output_activation": "sigmoid",
-
     "input_file": "./input_files/c.txt",
     "training_set_ratio": 100,
-
     "num_features": 35,
     "num_outputs": 35,
-
     "apply_bias": 0,
     "learning_rate": 0.0001,
-
-    "num_epochs": 1900000,
-    
+    "num_epochs": 250000,
     "use_mini_batches": 0,
     "mini_batch_size": 1,
-
     "hidden_layers": {
         "use_num": 0,
         "num_layers": 3,
         "max_dim": 20,
         "__or": "",
-        "layer_dims": [17,8,2,8,17]
+        "layer_dims": [
+            17,
+            8,
+            2,
+            8,
+            17
+        ]
     },
-
     "optimizer": {
         "method": "adam",
         "momentum_alpha": 0.9,
@@ -34,7 +33,6 @@
             "epsilon": 1e-8
         }
     },
-
     "adaptive_etha": {
         "after": 0,
         "a": 0.01,

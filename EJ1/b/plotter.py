@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from multilayer_utils.Prediction import predict
 
-from EJ1.b.add_noise import binary_noise, distribution_noise
-from EJ1.b.autoencoder import Autoencoder
+from add_noise import binary_noise, distribution_noise
+from autoencoder import Autoencoder
 from inputs.fonts import formatFontList, bitmap
 from utils.constants import SIGMOID
 from utils.constants import SIGMOID, RELU
@@ -46,6 +46,7 @@ def plotError(encoder):
 autoencoder = Autoencoder()
 #autoencoder.fontMap = binary_noise(0.1, autoencoder.fontMap)
 autoencoder.fontMap = distribution_noise(0.1, autoencoder.fontMap)
+print(autoencoder.fontMap.shape[1])
 autoencoder.trainNetwork()
 plotError(autoencoder)
 plotResultComparison(autoencoder)

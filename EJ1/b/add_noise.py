@@ -1,29 +1,30 @@
 import random
+import numpy as np
 
 def binary_noise(prob, data):
     new_data = []
-    font = 0
+    line = []
     for row in data:
-        new_data.append([])
+        #print(len(row))
         for x in row:
             r = random.randint(0,10)
             if(r < prob * 10):
                 if x == 1:
                     x = 0
                 else: 
-                    x = 1
-            new_data[font].append(x)
-        font = font + 1 
-        
-    return new_data
+                    x = 1        
+            line.append(x)
+        new_data.append(np.array(line))
+        line = []
+    
+    return np.array(new_data)
             
             
             
 def distribution_noise(prob, data):
     new_data = []
-    font = 0
+    line = []
     for row in data:
-        new_data.append([])
         for x in row:
             r = random.randint(0,10)
             if(r < prob * 10):
@@ -33,7 +34,8 @@ def distribution_noise(prob, data):
                 else: 
                     x = r1 * 0.1
             x = round(x,1)        
-            new_data[font].append(x)
-        font = font + 1 
+            line.append(x)
+        new_data.append(np.array(line))
+        line = []
 
-    return new_data
+    return np.array(new_data)
