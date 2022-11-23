@@ -124,6 +124,7 @@ class VAE:
         x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
 
         self.vae.fit(x_train, x_train, shuffle=True, epochs=self.epochs, batch_size=self.batch_size)
+        
     def plotResults(self):
         n = 15  # figure with 15x15 digits
         digit_size = self.image_shape[0]
