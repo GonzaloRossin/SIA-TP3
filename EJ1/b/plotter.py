@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from multilayer_utils.Prediction import predict
 
-from EJ1.b.add_noise import *
+from EJ1.b.add_noise import binary_noise, distribution_noise
 from EJ1.b.autoencoder import Autoencoder
 from inputs.fonts import formatFontList, bitmap
 from utils.constants import SIGMOID

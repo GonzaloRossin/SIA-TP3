@@ -1,6 +1,4 @@
 import random
-import math
-
 
 def binary_noise(prob, data):
     new_data = []
