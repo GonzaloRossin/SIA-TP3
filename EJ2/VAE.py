@@ -15,10 +15,8 @@ from tensorflow.python.framework.ops import disable_eager_execution
 
 
 class VAE:
-    def __init__(self, epochs):
+    def __init__(self, epochs, image_width, image_height):
         disable_eager_execution()
-        image_width = 16
-        image_height = 16
         self.image_folder = 'images'
         self.image_shape = (image_width, image_height)
         self.channels = 3
