@@ -10,18 +10,9 @@ from utils.constants import SIGMOID, RELU
 
 charset = ['`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~','DEL']
 
-def plotError(autoencoder):
-    x = []
-    for i in range(len(autoencoder.getErrors())):
-        x.append(i)
-
-    plt.plot(x, autoencoder.getErrors())
-    plt.show()
-
-
 def plotResultComparison(encoder: Autoencoder):
-    nlayers = encoder.inputHandler.num_layers
-    idx = nlayers // 2 + 2
+    idx = autoencoder.inputHandler.latent_layer + 1
+    print(f"idx = {idx}")
     prediction, _ = predict_latent(encoder.getFontMap(), idx, encoder.getParameters(), SIGMOID, False)
     prediction = np.array(prediction).T
     x = prediction.T[0]
@@ -34,6 +25,3 @@ def plotResultComparison(encoder: Autoencoder):
 autoencoder = Autoencoder()
 autoencoder.trainNetwork()
 plotResultComparison(autoencoder)
-'''
-plotError(autoencoder)
-'''
