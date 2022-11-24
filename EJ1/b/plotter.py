@@ -46,7 +46,6 @@ def plotError(encoder):
 autoencoder = Autoencoder()
 #autoencoder.fontMap = binary_noise(0.1, autoencoder.fontMap)
 autoencoder.fontMap = distribution_noise(0.1, autoencoder.fontMap)
-print(autoencoder.fontMap.shape[1])
 autoencoder.trainNetwork()
 plotError(autoencoder)
 plotResultComparison(autoencoder)
