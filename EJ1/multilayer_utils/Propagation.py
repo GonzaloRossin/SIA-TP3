@@ -19,7 +19,7 @@ def excitation_activation_forward(V_prev, W, b, activation):
     cache = (excitation_cache, activation_cache)
     return V, cache
 
-def model_forward(X, parameters, apply_bias, hidden_activation, output_activation):
+def model_forward(X, parameters, apply_bias, hidden_activation, output_activation, latent_layer=-1, generate_mode=False, generate_params=None):
     V = X
     caches = []
     latent_code = []
@@ -27,8 +27,19 @@ def model_forward(X, parameters, apply_bias, hidden_activation, output_activatio
         L = len(parameters) // 2    # includes weights and biases
     else:
         L = len(parameters)
+    if latent_layer == -1:
+        start_l = 1
+        stop_l = L
+    else:
+        if generate_mode:
+            start_l = latent_layer+1
+            stop_l = L
+            V = generate_params
+        else:
+            start_l = 1
+            stop_l = latent_layer
     # activate hidden layers
-    for l in range(1, L):   # l=0 is the input
+    for l in range(start_l, stop_l):   # l=0 is the input
         V_prev = V
         if (apply_bias):
             b = parameters['b'+str(l)]
@@ -40,9 +51,9 @@ def model_forward(X, parameters, apply_bias, hidden_activation, output_activatio
         caches.append(cache)
     # activate output layer
     if (apply_bias):
-        O, cache = excitation_activation_forward(V, parameters['W'+str(L)], parameters['b'+str(L)], output_activation)
+        O, cache = excitation_activation_forward(V, parameters['W'+str(stop_l)], parameters['b'+str(stop_l)], output_activation)
     else:
-        O, cache = excitation_activation_forward(V, parameters['W'+str(L)], 0, output_activation)
+        O, cache = excitation_activation_forward(V, parameters['W'+str(stop_l)], 0, output_activation)
     caches.append(cache)
     return O, caches, latent_code
 

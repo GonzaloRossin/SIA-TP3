@@ -35,3 +35,13 @@ def predict_multiclass(X, trained_parameters, hidden_activation, output_activati
         max_val = np.max(output)
         P.append(1 * (output == max_val))
     return O, P
+
+def predict_latent(X, latent_idx, trained_parameters, hidden_activation, apply_bias):
+    O, _, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, SIGMOID, latent_layer=latent_idx)
+    P = 1 * (O > 0.5)
+    return O, P
+
+def predict_generated(X, latent_idx, custom_params, trained_parameters, hidden_activation, apply_bias):
+    O, _, _ = model_forward(X, trained_parameters, apply_bias, hidden_activation, SIGMOID, latent_layer=latent_idx, generate_mode=True, generate_params=custom_params)
+    P = 1 * (O > 0.5)
+    return O, P

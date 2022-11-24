@@ -21,11 +21,13 @@ En caso de no tenerlas instaladas, se pueden ejecutar los siguientes comandos pa
 
 ##### Ejecutar programa
 
-Debe estar en carpeta EJ1/a:
+Debe estar en carpeta EJ1:
 
 ```bash
-    python plotter.py
+    python aX.py
 ```
+
+Siendo X el ejercicio 1, 3 o 4. Para el 2, cambiar optimizador en la configuración.
 
 #### Administrar parámetros
 

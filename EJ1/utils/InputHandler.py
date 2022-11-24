@@ -32,6 +32,8 @@ class InputHandler:
         self.num_layers = input['hidden_layers']['num_layers']
         self.learning_rate = input['learning_rate']
 
+        self.latent_layer = input['latent_layer']
+
         #self.normalize = (input['normalize']==1)
         self.hidden_activation = input['hidden_activation']
         self.output_activation = input['output_activation']

@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from multilayer_utils.Prediction import predict
+from matplotlib.pyplot import matshow
 
-from EJ1.a.autoencoder import Autoencoder
+from autoencoder import Autoencoder
 from inputs.fonts import formatFontList, bitmap
 from utils.constants import SIGMOID
 from utils.constants import SIGMOID, RELU
@@ -20,20 +21,29 @@ def plotError(autoencoder):
 def plotResultComparison(encoder):
     prediction, _ = predict(encoder.getFontMap(), encoder.getParameters(), False, SIGMOID, SIGMOID)
     prediction = np.array(prediction).T
-
-    for i in range(32):
-        output = np.reshape(prediction[i], (7, 5))
-        plt.matshow(output, vmin=0, vmax=1)
-        plt.colorbar()
-        plt.show()
+    
+    #'''
+    
+    plt.figure()
+    for i in range(1,33):
+        plt.subplot(1, 32, i)
+        output = np.reshape(prediction[i-1], (7, 5))
+        matshow(output, vmin=0, vmax=1, fignum=False)
+        plt.axis('off')
+    
+    plt.show()
+    #'''
 
 def plotInput():
     testSet = formatFontList(bitmap).T
-    for i in range(len(bitmap)):
-        matrix = np.reshape(testSet[i], (7, 5))
-        plt.matshow(matrix)
-        plt.colorbar()
-        plt.show()
+    for i in range(1,33):
+        plt.subplot(1,32,i)
+        matrix = np.reshape(testSet[i-1], (7, 5))
+        plt.matshow(matrix, vmin=0, vmax=1, fignum=False)
+        plt.axis('off')
+
+    plt.show()
+
 
 def plotError(encoder):
     x = []
@@ -45,5 +55,6 @@ def plotError(encoder):
 
 autoencoder = Autoencoder()
 autoencoder.trainNetwork()
-plotError(autoencoder)
+#plotError(autoencoder)
+#plotInput()
 plotResultComparison(autoencoder)
