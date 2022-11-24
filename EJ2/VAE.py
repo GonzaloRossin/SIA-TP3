@@ -23,7 +23,7 @@ class VAE:
         self.original_dim = image_width * image_height * self.channels
         self.latent_dim = 2
         self.intermediate_dim = 256
-        self.batch_size = 92
+        self.batch_size = 10
         self.epochs = epochs
         self.epsilon_std = 1.0
         self.encoder = None
