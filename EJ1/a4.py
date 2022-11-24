@@ -12,6 +12,14 @@ from utils.constants import SIGMOID, RELU
 
 charset = ['`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~','DEL']
 
+def plotError(autoencoder):
+    x = []
+    for i in range(len(autoencoder.getErrors())):
+        x.append(i)
+
+    plt.plot(x, autoencoder.getErrors())
+    plt.show()
+
 autoencoder = Autoencoder()
 nlayers = autoencoder.inputHandler.num_layers
 idx = autoencoder.inputHandler.latent_layer + 1
@@ -22,6 +30,7 @@ if len(sys.argv)-1 < latent_layer_dim:
     print(f"Wrong quantity of layers. {latent_layer_dim} are needed")
 else:
     autoencoder.trainNetwork()
+    plotError(autoencoder)
     prediction, _ = predict_latent(autoencoder.getFontMap(), idx, autoencoder.getParameters(), SIGMOID, False)
     prediction = np.array(prediction).T
     x = prediction.T[0]
@@ -30,14 +39,12 @@ else:
     plt.scatter(x, y, c='blue')
     new_x = [float(sys.argv[1])]
     new_y = [float(sys.argv[2])]
-    print(f"new x {sys.argv[1]} new y {sys.argv[2]}")
     plt.plot(new_x, new_y, marker='*', c='red')
     for i, txt in enumerate(charset):
         plt.annotate(txt, (x[i] + 0.01, y[i] + 0.01))
     plt.show()
     new_input = [float(sys.argv[1]), float(sys.argv[2])]
     V = np.array(new_input).T
-    print(f"V shape {V}")
     prediction, _ = predict_generated(autoencoder.getFontMap(), idx, V, autoencoder.getParameters(), SIGMOID, False)
     prediction = np.array(prediction).T
     output = np.reshape(prediction, (7, 5))
