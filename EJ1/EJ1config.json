@@ -12,7 +12,7 @@
     "apply_bias": 0,
     "learning_rate": 0.0001,
 
-    "num_epochs": 1000000,
+    "num_epochs": 10000,
     
     "use_mini_batches": 0,
     "mini_batch_size": 1,
@@ -25,7 +25,7 @@
         "layer_dims": [20,10,2,25]
     },
 
-    "latent_layer": 1,
+    "latent_layer": 2,
 
     "optimizer": {
         "method": "adam",
