@@ -7,11 +7,10 @@ inputs/__pycache__/
 
 utils/__pycache__/
 
-EJ1/a/__pycache__/
+EJ1/*/__pycache__/
 
-EJ1/b/__pycache__/
-EJ1/b/inputs/__pycache__/
-EJ1/b/utils/__pycache__/
-EJ1/b/multilayer_utils/__pycache__/
+EJ1/__pycache__/
+
 EJ2/__pycache__/
 
+env
