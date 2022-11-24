@@ -18,21 +18,22 @@ def plotError(autoencoder):
 
 
 def plotResultComparison(encoder):
-    #testSet = formatFontList(bitmap).T
     prediction, _ = predict(encoder.getFontMap(), encoder.getParameters(), False, SIGMOID, SIGMOID)
     prediction = np.array(prediction).T
 
-    '''for i in range(len(bitmap)):
-        matrix = np.reshape(testSet[i], (7, 5))
-        plt.matshow(matrix)
-        plt.colorbar()
-        plt.show()'''''
     for i in range(32):
         output = np.reshape(prediction[i], (7, 5))
         plt.matshow(output, vmin=0, vmax=1)
         plt.colorbar()
         plt.show()
 
+def plotInput():
+    testSet = formatFontList(bitmap).T
+    for i in range(len(bitmap)):
+        matrix = np.reshape(testSet[i], (7, 5))
+        plt.matshow(matrix)
+        plt.colorbar()
+        plt.show()
 
 def plotError(encoder):
     x = []

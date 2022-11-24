@@ -15,10 +15,8 @@ from tensorflow.python.framework.ops import disable_eager_execution
 
 
 class VAE:
-    def __init__(self, epochs):
+    def __init__(self, epochs, image_width, image_height):
         disable_eager_execution()
-        image_width = 16
-        image_height = 16
         self.image_folder = 'images'
         self.image_shape = (image_width, image_height)
         self.channels = 3
@@ -124,6 +122,7 @@ class VAE:
         x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
 
         self.vae.fit(x_train, x_train, shuffle=True, epochs=self.epochs, batch_size=self.batch_size)
+        
     def plotResults(self):
         n = 15  # figure with 15x15 digits
         digit_size = self.image_shape[0]
